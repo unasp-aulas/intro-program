@@ -1,0 +1,90 @@
+/*-- scss:functions --*/
+
+/*-- scss:defaults --*/
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;1,100&display=swap");
+$font-family-sans-serif: "IBM Plex Sans", sans-serif !default;
+$presentation-title-slide-text-align: "left";
+
+// colors
+$color-palette1: #000;
+$color-palette2: #0f62fe;
+$color-palette3: #d0e2ff;
+$color-palette4: #e5f6ff;
+$color-palette5: #fff;
+
+// body
+$body-color: $color-palette1;
+
+// code block
+$code-block-bg: $color-palette5;
+$code-block-border-color: $color-palette5;
+$code-block-font-size: 0.5em;
+
+// link
+$link-color: $color-palette2;
+
+/*-- scss:rules --*/
+#title-slide {
+    .title {
+        font-size: 60px;
+        color: $color-palette5;
+    }
+    .subtitle {
+        font-size: 40px;
+        color: $color-palette5;
+    }
+    .quarto-title-author-name {
+        font-size: 40px;
+        color: $color-palette5;
+    }
+    .date {
+        font-size: 40px;
+        color: $color-palette5;
+    }
+}
+
+#title-slide[style] {
+    top: 5% !important;
+}
+
+img.rounded-corners {
+    border-radius: 50%;
+}
+
+ul li {
+    list-style-type: "\2013";
+    padding-left: 0.5em;
+}
+
+.medium {
+    bottom: 50%;
+    transform: translate(50%, 50%);
+    position: absolute;
+}
+
+table {
+    font-size: 65%;
+}
+
+.reveal .footer {
+    text-align: left !important;
+    color: #000;
+    padding-left: 60px;
+}
+
+.border-right {
+    border-right: solid 1px #000;
+    box-sizing: border-box;
+    padding-right: 3%;
+    height: 80%;
+}
+
+.blue {
+    color: $color-palette2;
+    font-weight: bold;
+}
+
+mark {
+    background: #f7b36fb2 !important;
+}

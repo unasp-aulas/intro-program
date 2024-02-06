@@ -1,0 +1,86 @@
+---
+title: "Introdução à Programação"
+author: "Thiago Pires"
+title-slide-attributes:
+  data-background-image: cover.gif
+  data-background-position: cover
+format: 
+  revealjs:
+    theme: theme.scss
+    width: 1600
+    height: 900
+    footer: "[github.com/unasp-aulas/intro-program](https://github.com/unasp-aulas/intro-program)"
+html-math-method: mathjax
+code-annotations: below
+self-contained: true
+execute: 
+  echo: true
+---
+
+# Desenvolvimento de algoritmos para solução de problemas
+
+> *Em matemática e ciência da computação, um algoritmo é uma <mark>sequência finita de ações executáveis que visam obter uma solução</mark> para um determinado tipo de problema.* 
+
+\ -- [pt.wikipedia.org/wiki/Algoritmo](https://pt.wikipedia.org/wiki/Algoritmo)
+
+## Algoritmo
+
+\
+
+O conceito de [algoritmo]{.blue} é frequentemente <mark>ilustrado pelo exemplo de uma receita culinária</mark>, embora muitos algoritmos sejam mais complexos. Eles podem repetir passos (fazer [iterações]{.blue}) ou necessitar de [decisões]{.blue} (tais como comparações ou lógica) até que a tarefa seja completada.
+
+\
+
+Um algoritmo <mark>não representa, necessariamente, um programa de computador,</mark> e sim os passos necessários para realizar uma tarefa.
+
+
+## Etapas para construção de um programa
+
+\
+
+[1. Definição do problema]{.fragment}
+
+[2. Projetar a solução (algorítmo)]{.fragment}
+
+[3. Codificar a solução (programar em uma linguagem)]{.fragment}
+
+[4. Testar o programa]{.fragment}
+
+
+## Etapas para construção de um programa
+
+\
+
+:::: columns
+::: {.column .fragment}
+1. Qual é o próximo número da sequência: 
+
+$$1, 1, 2, 3, 5, 8, 13,\dots$$
+
+2.
+
+$$
+\begin{align}
+F(n+2)=F(n+1)+F(n), \\
+\text{com}\; n \geq 1\;\text{e}\; F(1) = F(2) = 1
+\end{align}
+$$
+:::
+::: {.column .fragment}
+3.
+
+```{python}
+def fibonacci_of(n):
+    if n in {0, 1}:  # Base case
+        return n
+    return fibonacci_of(n - 1) + fibonacci_of(n - 2)  # Recursive case
+```
+
+4.
+
+```{python}
+[fibonacci_of(n) for n in range(1, 9)]
+```
+:::
+::::
+

@@ -84,3 +84,42 @@ def fibonacci_of(n):
 :::
 ::::
 
+# Introdução ao Python
+
+## Instalação
+
+\
+
+- Download <https://www.python.org/downloads/>
+- Para instalar o gerenciador de pacotes (`pip`) <https://pip.pypa.io/en/stable/installation/>
+- Para instalar o Anaconda (gerenciador de pacotes e ambiente) <https://www.anaconda.com/download>
+
+## Google Colab
+
+\
+
+Acesso em <https://research.google.com/colaboratory/>
+
+## `pip` um gerenciador de pacotes
+
+\
+
+```
+# Instalar 1 ou + pacotes
+pip install pandas
+
+# Instalar um conjunto de pacotes a partir do arquivo requirements.txt
+pip install -r requirements.txt
+
+# Listar todos os pacotes instalados
+pip freeze
+```
+
+
+
+
+
+
+
+
+

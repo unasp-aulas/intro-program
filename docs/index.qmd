@@ -11,10 +11,12 @@ format:
     height: 900
     footer: "[github.com/unasp-aulas/intro-program](https://github.com/unasp-aulas/intro-program)"
 html-math-method: mathjax
-code-annotations: below
+code-annotations: hover
 self-contained: true
+ipynb-shell-interactivity: all
 execute: 
   echo: true
+jupyter: python3
 ---
 
 # Desenvolvimento de algoritmos para solução de problemas
@@ -106,7 +108,7 @@ Acesso em <https://research.google.com/colaboratory/>
 
 ```
 # Instalar 1 ou + pacotes
-pip install pandas
+pip install pandas folium
 
 # Instalar um conjunto de pacotes a partir do arquivo requirements.txt
 pip install -r requirements.txt
@@ -115,11 +117,465 @@ pip install -r requirements.txt
 pip freeze
 ```
 
+## Módulos
+
+\
+
+Para utlizar as funções de outros pacotes é necessário carregar os módulos com `import`:
+
+```{python}
+#| output-location: column
+import re
+
+txt = "unasp fica no estado de sp"
+x = re.findall("sp", txt); x
+```
+
+\
+
+```{python}
+#| output-location: column
+import re as regex
+
+txt = "unasp fica no estado de sp"
+x = regex.findall("sp", txt); x
+```
+
+\
+
+```{python}
+#| output-location: column
+from re import findall
+
+txt = "unasp fica no estado de sp"
+x = findall("sp", txt); x
+```
+
+## Aritmética
+
+\
+
+:::: columns
+::: {.column}
+Cálculos simples $\frac{((5 + 3) \times 7)}{5}$
+
+```{python}
+(5 + 3) * 7/5
+```
+
+\
+
+Potência $10^2$
+
+```{python}
+10**2
+```
+:::
+::: {.column}
+Raiz quadrada $\sqrt{100}$
+
+```{python}
+from math import sqrt
+sqrt(100)
+```
+
+\
+
+Derivada $f'(x) = \text{cos}(x)$
+
+```{python}
+from sympy import *
+x = symbols('x')
+diff(cos(x), x)
+```
+:::
+::::
+
+# Variáveis e entrada de dados
+
+> *Em programação, variáveis são utilizadas para armazenar valores. Então `x = 1`, a variável `x` armazena o valor 1*
+
+## Nomes de variáveis
+
+\
+
+### Nomes aceitos
+
+- `a1`
+- `velocidade`
+- `velocidade90`
+- `salário_médio`
+- `_b`
+
+### Nomes não aceitos
+
+- `salário médio` (utilizando espaço)
+- `1a` (começando com números)
+
+## Variáveis numéricas
+
+\
+
+:::: columns
+::: {.column}
+### Números inteiros
+
+```{python}
+a = 1_000
+b = 2
+c = -5
+```
+
+\
+
+### Números de ponto flutuante ou decimais
+
+```{python}
+d = 1.0
+e = 5.478
+g = 3000.67
+```
+:::
+::: {.column}
+### Verificando o tipo com a função `type`
+
+```{python}
+type(a)
+```
+
+```{python}
+type(d)
+```
+:::
+::::
+
+## Variáveis do tipo lógico
+
+```{python}
+resultado = True
+aprovado = False
+```
+
+\
+
+### Operadores relacionais
+
+```{python}
+#| output-location: column
+# Variáveis
+a = 2 # <1>
+b = 5 # <1>
+c = 5 # <1>
+# Operadores relacionais
+b > a # <2>
+a < b # <3>
+c <= b # <4>
+c == b # <5>
+a != b # <6>
+```
+1. Variáveis `a`, `b` e `c`
+2. `b` maior do que `a`
+3. `a` menor do que `b`
+4. `c` é menor ou igual a `b`
+5. `c` é igual a `b`
+6. `a` é diferente de `b`
+
+Verificando o tipo
+
+```{python}
+type(resultado)
+```
+
+## Operadores lógicos
+
+\
+
+```{python}
+#| output-location: column
+not True
+not False
+True and True
+True and False
+False and True
+False and False
+True or True
+True or False
+False or True
+False or False
+```
+Expressões lógicas
+
+```{python}
+True or False and not True
+```
+
+## Variáveis string
+
+> *Variáveis do tipo [string]{.blue} armazenam cadeias de caracteres como nomes e textos em geral.*
+
+```{python}
+s = "texto"
+type(s)
+```
+
+O tamanho de uma string pode ser obtido utilizando-se a função `len`:
+
+```{python}
+len(s)
+```
+
+## Operações com strings
+
+\
+
+### Concatenação
+
+```{python}
+#| output-location: column
+s = "ABC"
+s + "D"
+```
+
+```{python}
+#| output-location: column
+"#" + 20 * "-" + "#"
+```
+
+\
+
+### Composição
+
+```{python}
+"%s tem %d anos e R$%.2f" % ("João", 40, 50.453)
+```
+
+```{python}
+"{} tem {} anos e R${:.2f}".format("João", 40, 50.453)
+```
+
+```{python}
+nome, idade, dinheiro = "João", 40, 50.453
+f"{nome} tem {idade} anos e R${dinheiro:.2f}"
+```
+
+## Entrada de dados
+
+\
+
+A função `input` é utilizada para solicitar dados do usuário. Ela recebe um parâmetro, que é a mensagem a ser exibida, e retorna o valor digitado pelo usuário.
+
+```{python}
+#| eval: false
+x = input("Digite um número: ")
+print(x)
+```
+
+\
+
+Produzindo a seguinda saída na tela:
+
+```
+Digite um número: 5
+5
+```
+
+## Exercícios
+
+\
+
+Faça um programa que calcule o aumento de um salário. Ele deve solicitar o valor do salário e a porcentagem do aumento. Exiba o valor do salário, percentual de aumento e do novo salário.
+
+```{python}
+#| eval: false
+# Inputs
+salario = float(input("Digite seu salário: ")) # <1>
+percentual = float(input("Digite o percentual de aumento: ")) # <1>
+
+# Cálculo
+novo_salario = salario * (1 + percentual/100) # <2>
+
+# Resultado
+print(f"O meu salário é R${salario:.2f}, o percentual de aumento foi {percentual:.1f}% e o novo salário será de R${novo_salario:.2f}") # <3>
+```
+
+1. Definir os inputs, lembrar que se está lidando com números utilizar `float`
+2. Cálculo do novo salário
+3. Resultado compondo com as variáveis e cálculos anteriores
+
+# Condições
+
+> *As condições servem para selecionar quando uma parte do programa deve ser ativada e quando deve ser simplesmente ignorada*
+
+## Condições
+
+```python
+if <condição>:
+  bloco verdadeiro
+```
+
+### Exercício
+
+Faça um programa que calcule o aumento de um salário. Ele deve solicitar o valor do salário e o nível do cargo. Cargo junior terá um aumento de 10%, pleno de 20% e senior 30%. Mostre uma saída com o salário, o cargo e o novo salário.
 
 
+```{python}
+#| eval: false
+salario = float(input("Digite seu salário: "))
+cargo = input("Digite o nível do cargo: ")
+if cargo == "junior": # <1>
+  novo_salario = salario * 1.1 # <1>
+elif cargo == "pleno":
+  novo_salario = salario * 1.2
+elif cargo == "senior":
+  novo_salario = salario * 1.3 
+else:
+  print("Cargo não identificado!")
 
+print(f"O meu salário é R${salario:.2f}, mas com o meu cargo {cargo}, o novo salário será de R${novo_salario:.2f}")
+```
 
+1. Se o cargo é junior o salário é multiplicado por 1 + 0,1 (10%)
 
+## Exercício
 
+O exercício anterior considerando que se o profissional no cargo senior tiver filho o salário terá um acréscimo de R$ 500
 
+```{python}
+#| eval: false
+salario = float(input("Digite seu salário: "))
+cargo = input("Digite o nível do cargo: ")
+if cargo == "junior":
+  novo_salario = salario * 1.1
+elif cargo == "pleno":
+  novo_salario = salario * 1.2
+elif cargo == "senior":
+  novo_salario = salario * 1.3
+  filhos = input("Você tem filhos? ")
+  if filhos == "sim": # <1>
+    novo_salario += 500 # <1>
+else:
+  print("Cargo não identificado!")
 
+print(f"O meu salário é R${salario:.2f}, mas com o meu cargo {cargo}, o novo salário será de R${novo_salario:.2f}")
+```
+
+1. `if` aninhado
+
+# Repetições
+
+> *São utilizadas para executar a mesma parte de um programa várias vezes*
+
+## Repetições
+
+\
+
+### `while`
+
+```python
+while <condição>:
+  bloco
+```
+
+\
+
+Imprimir números de 1 a 5
+
+```{python}
+x = 1 # <1>
+while x <= 5: # <2>
+  print(x) # <3>
+  x += 1 # <3>
+```
+
+1. Inicializa com o número 1
+2. Combina a estrutura condicional com a estrutura de repetição
+3. Repete estas linhas enquanto a condição for verdadeira
+
+## Enquanto não sair, continuar repetindo a pergunta
+
+\
+
+### `while`
+
+```{python}
+#| eval: false
+exit = False
+while not exit:
+
+    exit = input("Você quer sair? ")
+    if exit == "Sim":
+        exit = True
+        print("Bye!")
+    else:
+        exit = False
+```
+
+## Exercício
+
+\
+
+Construa um programa que solicite para qual número deve ser calculada a tabuada de multiplicação
+
+```{python}
+#| eval: false
+n = int(input("Tabuada de: "))
+x = 0
+while x <= 10:
+    print(f"{n} {chr(215)} {x} = {n * x}") # <1>
+    x = x + 1
+```
+
+1. A função `char` mostra um caractere unicode
+
+## Repetições
+
+\
+
+### Acumuladores com `while`
+
+Programa para calcular a soma de 10 números inseridos
+
+```{python}
+#| eval: false
+n = 1
+soma = 0
+while n <= 10:
+  x = int(input(f"Digite o {n} número: "))
+  soma += x # <1>
+  n += 1
+print(f"Soma: {soma}")
+```
+
+1. Variável acumuladora
+
+## Operadores de atribuição especial
+
+\
+
+Equivalências:
+
+- `x += 1` $\Longleftrightarrow$ `x = x + 1` 
+- `y -= 1` $\Longleftrightarrow$ `y = y - 1` 
+- `c *= 1` $\Longleftrightarrow$ `c = c * 2` 
+- `d /= 1` $\Longleftrightarrow$ `d = d / 1` 
+- `e **= 1` $\Longleftrightarrow$ `e = e ** 1` 
+- `f //= 1` $\Longleftrightarrow$ `f = f // 1` 
+
+## Repetições
+
+\
+
+### Interrompendo a repetição `while`
+
+```{python}
+#| eval: false
+s = 0
+while True:
+  v = int(input("Digite um número a somar ou 0 para sair: "))
+  if v == 0:
+    break # <1>
+  s += v
+print(s)
+```
+
+1. Instrução utilizada para interromper a execução de `while`

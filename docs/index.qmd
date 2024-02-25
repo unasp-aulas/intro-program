@@ -313,6 +313,8 @@ True or False and not True
 
 > *Variáveis do tipo [string]{.blue} armazenam cadeias de caracteres como nomes e textos em geral.*
 
+\
+
 ```{python}
 s = "texto"
 type(s)
@@ -372,7 +374,7 @@ print(x)
 
 \
 
-Produzindo a seguinda saída na tela:
+Produzindo a seguinte saída na tela:
 
 ```
 Digite um número: 5
@@ -408,12 +410,38 @@ print(f"O meu salário é R${salario:.2f}, o percentual de aumento foi {percentu
 
 ## Condições
 
+\
+
+### `if`
+
 ```python
 if <condição>:
   bloco verdadeiro
 ```
 
-### Exercício
+### `else`
+
+```python
+if <condição>:
+  bloco verdadeiro
+else:
+  bloco alternativo
+```
+
+### `elif`
+
+Inserindo mais condições
+
+```python
+if <condição>:
+  bloco verdadeiro
+elif <condição>:
+  bloco verdadeiro para esta condição
+```
+
+## Exercício
+
+\
 
 Faça um programa que calcule o aumento de um salário. Ele deve solicitar o valor do salário e o nível do cargo. Cargo junior terá um aumento de 10%, pleno de 20% e senior 30%. Mostre uma saída com o salário, o cargo e o novo salário.
 
@@ -437,6 +465,8 @@ print(f"O meu salário é R${salario:.2f}, mas com o meu cargo {cargo}, o novo s
 1. Se o cargo é junior o salário é multiplicado por 1 + 0,1 (10%)
 
 ## Exercício
+
+\
 
 O exercício anterior considerando que se o profissional no cargo senior tiver filho o salário terá um acréscimo de R$ 500
 

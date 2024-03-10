@@ -366,8 +366,7 @@ f"{nome} tem {idade} anos e R${dinheiro:.2f}"
 
 A função `input` é utilizada para solicitar dados do usuário. Ela recebe um parâmetro, que é a mensagem a ser exibida, e retorna o valor digitado pelo usuário.
 
-```{python}
-#| eval: false
+```{.python}
 x = input("Digite um número: ")
 print(x)
 ```
@@ -387,8 +386,7 @@ Digite um número: 5
 
 Faça um programa que calcule o aumento de um salário. Ele deve solicitar o valor do salário e a porcentagem do aumento. Exiba o valor do salário, percentual de aumento e do novo salário.
 
-```{python}
-#| eval: false
+```{.python}
 # Inputs
 salario = float(input("Digite seu salário: ")) # <1>
 percentual = float(input("Digite o percentual de aumento: ")) # <1>
@@ -446,8 +444,7 @@ elif <condição>:
 Faça um programa que calcule o aumento de um salário. Ele deve solicitar o valor do salário e o nível do cargo. Cargo junior terá um aumento de 10%, pleno de 20% e senior 30%. Mostre uma saída com o salário, o cargo e o novo salário.
 
 
-```{python}
-#| eval: false
+```{.python}
 salario = float(input("Digite seu salário: "))
 cargo = input("Digite o nível do cargo: ")
 if cargo == "junior": # <1>
@@ -470,8 +467,7 @@ print(f"O meu salário é R${salario:.2f}, mas com o meu cargo {cargo}, o novo s
 
 O exercício anterior considerando que se o profissional no cargo senior tiver filho o salário terá um acréscimo de R$ 500
 
-```{python}
-#| eval: false
+```{.python}
 salario = float(input("Digite seu salário: "))
 cargo = input("Digite o nível do cargo: ")
 if cargo == "junior":
@@ -510,7 +506,7 @@ while <condição>:
 
 Imprimir números de 1 a 5
 
-```{python}
+```{.python}
 x = 1 # <1>
 while x <= 5: # <2>
   print(x) # <3>
@@ -527,8 +523,7 @@ while x <= 5: # <2>
 
 ### `while`
 
-```{python}
-#| eval: false
+```{.python}
 exit = False
 while not exit:
 
@@ -546,8 +541,7 @@ while not exit:
 
 Construa um programa que solicite para qual número deve ser calculada a tabuada de multiplicação
 
-```{python}
-#| eval: false
+```{.python}
 n = int(input("Tabuada de: "))
 x = 0
 while x <= 10:
@@ -565,8 +559,7 @@ while x <= 10:
 
 Programa para calcular a soma de 10 números inseridos
 
-```{python}
-#| eval: false
+```{.python}
 n = 1
 soma = 0
 while n <= 10:
@@ -577,6 +570,24 @@ print(f"Soma: {soma}")
 ```
 
 1. Variável acumuladora
+
+## Repetições
+
+\
+
+### Acumuladores com `while`
+
+Programa para calcular a média de 10 números inseridos
+
+```{.python}
+n = 1
+soma = 0
+while n <= 10:
+  x = int(input(f"Digite o {n} número: "))
+  soma += x # <1>
+  n += 1
+print(f"Média: {soma/10:.1f}")
+```
 
 ## Operadores de atribuição especial
 
@@ -597,8 +608,7 @@ Equivalências:
 
 ### Interrompendo a repetição `while`
 
-```{python}
-#| eval: false
+```{.python}
 s = 0
 while True:
   v = int(input("Digite um número a somar ou 0 para sair: "))
@@ -609,3 +619,37 @@ print(s)
 ```
 
 1. Instrução utilizada para interromper a execução de `while`
+
+## Repetições
+
+\
+
+### Barra de progresso `while`
+
+```{.python}
+import os 
+import time
+
+print("\033[?25l", end="") # <1>
+x = 1    
+tamanho, _ = os.get_terminal_size()
+tamanho = tamanho - 5
+while x <= tamanho - 5:
+    bar = chr(9608) * x + f" {x * 100 / tamanho:.0f}"
+    print(bar)
+    time.sleep(.1) # <2>
+    os.system('cls') # <3>
+    x = x + 1
+```
+
+1. Apagar cursor
+2. O programa *dorme* por 0.1 seg
+3. Limpar a tela
+
+\
+
+```
+███████████████████████████████████████████████████ 76%
+```
+
+

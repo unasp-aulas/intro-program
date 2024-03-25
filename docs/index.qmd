@@ -739,3 +739,162 @@ notas = [9, 5, 4, 3, 9, 2]
 for i in notas:
   print(i)
 ```
+
+## Cópia de lista e substituição por um determinado valor
+
+\
+
+```{python}
+#| output-location: column
+L = ["a", "b", "c", "d", "e"]
+K = L # <1>
+L[3] = "r" # <2>
+print(K) # <3>
+```
+
+1. Cópia a lista `L` e salvo na variável `K`
+2. Substituição do elemento "d" pelo elemento "r"
+3. Como `K` é cópia de `L`, qualquer alteração em `L` produz uma alteração em `K`
+
+Uma outra forma de cópia seria utilizando o comando `[:]`
+
+```{python}
+#| output-location: column
+L = ["a", "b", "c", "d", "e"]
+K = L[:] # <1>
+L[3] = "r" # <2>
+print(K) # <3>
+```
+
+1. Esta forma de cópia inpede que `K` receba alterações se `L` for alterado.
+2. Substituição do elemento "d" pelo elemento "r"
+
+## Métodos
+
+Métodos são semanticamente o mesmo que funções, mas há duas diferenças sintáticas: Os métodos são definidos dentro de uma definição de classe. Dois métodos para inserir novos dados em uma lista são:
+
+- `append` insere um elemento em uma lista
+- `extend` insere vários elementos em uma lista
+
+```{python}
+#| output-location: column
+L = ["a", "b", "c", "d", "e"]
+L.append("f")
+print(L)
+```
+
+```{python}
+#| output-location: column
+L = ["a", "b", "c", "d", "e"]
+L.extend(["f", "g", "h"])
+print(L)
+```
+Se utilizar `append` para inserir multiplos itens ele será inserido como um único item
+
+```{python}
+#| output-location: column
+L = ["a", "b", "c", "d", "e"]
+L.append(["f", "g", "h"])
+print(L)
+```
+
+## Adicionar elementos em uma lista
+
+\
+
+Criar uma programa que adicione repetidamente números em uma lista, mas que ao digitar o número 0 o programa é interrompido
+
+```{.python}
+L = []
+while True:
+  n = int(input("Digite um número (0 para sair): "))
+  if n == 0:
+    break
+  L.append(n)
+print(f"Esta é a minha lista: {L}")
+```
+
+## Quantas letras tem em uma lista
+
+\
+
+Criar uma programa que verifique quantas letras "a" aparecem na lista
+
+```{python}
+soma = 0
+for i in ["a", "b", "a", "f"]:
+  if i == "a":
+    soma += 1
+print(soma)
+```
+
+## Qual é o máximo desta lista
+
+\
+
+Crie um programa que calcule o valor máximo de uma lista
+
+```{python}
+L = [1, 7, 4, 5, 2]
+
+maximo = L[0]
+for i in L:
+  if i > maximo:
+    maximo = i
+print(f"O número máximo é o: {maximo}")
+```
+
+## Digite um texto e qual letra gostaria de contar
+
+\
+
+Criar uma programa que solicite uma frase e a letra que gostaria que fosse contada
+```{.python}
+from unidecode import unidecode
+
+texto = input("Digite uma frase: ")
+letra = input("Qual letra gostaria de contar: ")
+
+soma = 0
+for i in texto:
+  if unidecode(i.lower()) == letra:
+    soma += 1
+print(f"A quantidade de '{letra}' nesta frase é de: {soma}")
+```
+
+\
+
+- Para remover acentos foi utilizado o `unidecode`
+- Para instalar `pip3 install unidecode`
+
+## Dicionário
+
+\
+
+### Caixa de supermercado
+
+```{.python}
+tabela = {"Alface": 5.00,
+          "Batata": 4.55,
+          "Tomate": 9.80,
+          "Feijão": 7.30}
+valor_total = 0 # <1>
+while True:
+    produto = input("Qual o produto? ").capitalize() # <2>
+   
+    if produto == "Sair": # <3>
+        print("Bye!") # <3>
+        break # <3>
+       
+    quantidade = int(input("Quantidade: ")) # <4>
+    valor_produto = tabela[produto] * quantidade # <5>
+    valor_total = valor_total + valor_produto # <6>
+print(f"Valor total das compras foi de: R${valor_total:.2f}")
+```
+
+1. Inicializando o valor total
+2. Solicitando o nome do produto
+3. Se escrever "Sair" o programa é interrompido
+4. Solicitando a quantidade
+5. Computando o valor do produto baseado na quantidade
+6. Valor total das compras

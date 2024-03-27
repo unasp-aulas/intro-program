@@ -549,7 +549,7 @@ while x <= 10:
     x = x + 1
 ```
 
-1. A função `char` mostra um caractere unicode
+1. A função `chr` mostra um caractere unicode
 
 ## Repetições
 
@@ -871,6 +871,51 @@ print(f"A quantidade de '{letra}' nesta frase é de: {soma}")
 
 \
 
+O dicionário é definido por `{}` e estruturado sempre com uma chave `'a' ` e um valor `1`, sendo separados por "`:`"
+```{python}
+x = {'a': 1, 'b': 2}
+```
+
+\
+
+Para obter um valor podemos usar `[]` com uma chave `x['a']` para poder retornar o valor associado a chave
+
+```{python}
+x["a"]
+```
+
+O dicionário tem dois métodos utilizados para retornar uma lista de chaves e valores
+
+```{python}
+x.keys()
+x.values()
+```
+
+## Dicionário
+
+\
+
+Para adicionar uma nova chave e valor
+
+```{python}
+x["c"] = 3
+x
+```
+
+\
+
+É possível adicionar outras estruturas de dados como valores no dicionário
+
+```{python}
+x["d"] = ["f", "g", "h"]
+x
+```
+
+
+## Dicionário
+
+\
+
 ### Caixa de supermercado
 
 ```{.python}
@@ -898,3 +943,37 @@ print(f"Valor total das compras foi de: R${valor_total:.2f}")
 4. Solicitando a quantidade
 5. Computando o valor do produto baseado na quantidade
 6. Valor total das compras
+
+## Dicionário 
+
+\
+
+### Contagem de letras
+
+```{python}
+d = {}
+for letra in "abracadabra":
+  d[letra] = d.get(letra, 0) + 1
+print(d)
+```
+
+## Dicionário 
+
+\
+
+### Contagem de letras
+
+```{python}
+#| output-location: column
+import pprint
+
+d = {}
+for letra in "abracadabra":
+  d[letra] = d.get(letra, 0) + 1
+
+for letra in d.keys():
+    d[letra] = d[letra] * chr(9608)
+
+pp = pprint.PrettyPrinter(width=1)
+pp.pprint(d)
+```

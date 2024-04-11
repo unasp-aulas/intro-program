@@ -977,3 +977,345 @@ for letra in d.keys():
 pp = pprint.PrettyPrinter(width=1)
 pp.pprint(d)
 ```
+
+## Tupla
+
+\
+
+As tuplas são similares às listas, mas com a diferença de serem imutáveis, ou seja, não é possível substituir um elemento. 
+
+```{python}
+x = (1, 2, 3, 4) # <1>
+x[2] # <2>
+```
+
+1. Na tupla os valores são definidos por parenteses
+2. Da mesma forma que a lista, os valores poderão ser extraídos pelo seu índice
+
+\
+
+Contudo podemos concatenar tuplas
+
+```{python}
+(1, 2, 3) + (4, 5)
+```
+
+\
+
+Um tupla com somente um elemento deve ser incluída a `,`
+
+```{python}
+(4,)
+```
+
+## Conjunto
+
+\
+
+Os conjuntos trazem a mesma ideia dos conjuntos da matemática. Um detalhe importante é se elementos repetidos forem incluidos eles são removidos automaticamente.
+
+```{python}
+x = {1, 2, 3, 4, 4, 2, 1}
+x
+```
+
+\
+
+Para adicionar um elemento
+
+```{python}
+x.add(5)
+x
+```
+
+## Conjunto
+
+\
+
+### União entre conjuntos
+
+```{python}
+#| output-location: column
+A = {1, 2, 3}
+B = {4, 5, 6}
+A | B
+```
+
+\
+
+### Interseção entre conjuntos
+
+```{python}
+#| output-location: column
+A = {1, 2, 3}
+B = {3, 4, 5}
+A & B
+```
+
+\
+
+### Diferença entre conjuntos
+
+```{python}
+#| output-location: column
+A = {1, 2, 3}
+B = {2, 3, 4, 5}
+B - A
+```
+
+# Funções
+
+## Funções
+
+\
+
+Uma função em python é iniciada com `def`, deve se incluir um `nome_função`, incluir `argumento` e uma declaração `return` para retornar o resultado
+
+```{python}
+def nome_função(argumento):
+  return argumento + 5
+```
+
+\
+
+Para utilizar a função
+
+```{python}
+nome_função(10)
+```
+
+## Funções
+
+\
+
+Função para verificar se o número é par
+
+```{python}
+def ehpar(num):
+  return num % 2 == 0
+```
+
+```{python}
+#| output-location: column
+ehpar(9)
+ehpar(4)
+```
+
+\
+
+Função para dizer se é par ou ímpar
+
+```{python}
+def par_ou_impar(num):
+  if ehpar(num):
+    return "par"
+  else:
+    return "ímpar"
+```
+
+```{python}
+#| output-location: column
+par_ou_impar(9)
+par_ou_impar(4)
+```
+
+## Funções
+
+\
+
+Calcular a soma de elementos de uma lista
+
+```{python}
+def somar_lista(lista):
+  soma = 0
+  for e in lista:
+    soma = soma + e
+  return soma
+
+somar_lista([1, 2, 3, 4])
+```
+
+Calcular a média de elementos de uma lista
+
+```{python}
+def media_lista(lista):
+  soma = 0
+  for e in lista:
+    soma = soma + e
+  return soma/len(lista)
+
+media_lista([1, 2, 3, 4])
+```
+
+## Funções
+
+\
+
+### Variáveis locais e globais
+
+```{python}
+#| output-location: column
+a = 'global'
+def f():
+  a = 'local'
+  print(a)
+
+f()
+print(a)
+```
+
+\
+
+```{python}
+#| output-location: column
+a = 'global'
+def f():
+  global a # <1>
+  a = 'local'
+  print(a)
+
+f()
+print(a)
+```
+
+1. Declarando a variável `a` como global, assim uma atribuição dentro da função afeta atribuições fora da função
+
+## Função
+
+\
+
+Criar uma função que retorna o aumento de salário. Os argumentos necessários para calcular este aumento de salário são o salário atual e o cargo que o profissional ocupa. Contudo se o cargo é junior o aumento será de de 10%, se for pleno o aumento será de 20% e se for senior o aumento será de 30%.
+
+
+```{python}
+def aumento_salario(salario, cargo):
+  if cargo == "junior":
+    return salario * 1.1
+  elif cargo == "pleno":
+    return salario * 1.2
+  elif cargo == "senior":
+    return salario * 1.3
+  else:
+    return "Cargo não identificado"
+```
+
+Aplicação da função
+
+```{python}
+aumento_salario(1100, "pleno")
+```
+
+## Função
+
+\
+
+### Jogo da Velha
+
+```{python}
+def tic_tac_toe():
+    
+    data = {}
+
+    def move(data, pos):
+        pos = data.get(pos, pos)
+        if pos == 1:
+            return chr(215)
+        elif pos == 0:
+            return chr(9711)
+        else:
+            return pos
+
+    def show_board():
+        print(f' {move(data, "1")} | {move(data, "2")} | {move(data, "3")} ')
+        print("-" * 11)
+        print(f' {move(data, "4")} | {move(data, "5")} | {move(data, "6")} ')
+        print("-" * 11)
+        print(f' {move(data, "7")} | {move(data, "8")} | {move(data, "9")} ')
+        print("\n")
+
+    def winner_checker():
+        win_pos = ["123", "456", "789", "147", "258", "369", "159", "357"]
+        win_checkers = [[data.get(i) for i in j] for j in win_pos]
+        check = True in [(set(i) == {1}) | (set(i) == {0}) for i in win_checkers]
+        return check
+
+    while True:
+        
+        show_board()
+        
+        player1 = input(f"Select a position (player {chr(215)}): ")
+        print("\n")
+        
+        data[player1] = 1
+
+        if winner_checker():
+          print(f"Player {chr(215)} Won!\n")
+          show_board()
+          break
+        
+        show_board()
+        
+        player2 = input(f"Select a position (player {chr(9711)}): ")
+        print("\n")
+        
+        data[player2] = 0
+
+        if winner_checker():
+          print(f"Player {chr(9711)} Won!\n")
+          show_board()
+          break
+```
+
+# Exceções
+
+## Exceções
+
+\
+
+Mesmo que um comando ou expressão estejam sintaticamente corretos, talvez ocorra um erro na hora de sua execução. Erros detectados durante a execução são chamados exceções
+
+```{python}
+#| error: true
+print(y)
+```
+
+\
+
+Podemos tratar as exceções utilizando o bloco `try/except`
+
+```{python}
+try:
+  print(y)
+except:
+  print("Variável não foi definida")
+```
+
+## Exceções
+
+\
+
+É possível também concatenar um texto padrão com o texto de erro
+
+```{python}
+try:
+  print(y)
+except Exception as err:
+  print(f"ERRO: {err}")
+```
+
+É possível também utilizar mais de uma exceção para direcionar diferentes tipos de erros
+
+```{python}
+#| eval: false
+y = [1, 2, 3]
+while True:
+  try:
+    i = int(input("Digite um número: "))
+    print(y[i])
+    break
+  except IndexError as err:
+    print("ERRO: ", err)
+  except ValueError as err:
+    print("ERRO: ", err)
+```
+

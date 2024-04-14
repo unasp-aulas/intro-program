@@ -1319,3 +1319,32 @@ while True:
     print("ERRO: ", err)
 ```
 
+## Exercício 
+
+\
+
+Escreva um programa que pergunte a disstância que um passageiro deseja percorrer em km. Calcule o preço da passagem, cobrando R$ 0.50 por km para viagens de até 200 km, R$ 0.45 para viagens entre 200 e 400 km e para viagens mais longas será cobrado R$ 0.35 por km. O programa só deve ser encerrado quando o usuário escrever sair.
+
+
+```{python}
+# | eval: false
+while True:
+    dist = input("Digite a distância: ")
+    try:
+        if dist.capitalize() == "Sair":
+            print("Bye!")
+            break
+        else:
+            dist = float(dist)
+
+        if dist <= 200:
+            preco = dist * 0.5
+        elif (dist > 200) & (dist <= 400):
+            preco = dist * 0.45
+        elif dist > 400:
+            preco = dist * 0.35
+        print(f"O preço ficou em R${preco:.2f}")
+        
+    except:
+        print("Valor inválido")
+```

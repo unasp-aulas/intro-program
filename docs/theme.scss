@@ -2,7 +2,7 @@
 
 /*-- scss:defaults --*/
 // fonts
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;1,100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;1,200&display=swap");
 $font-family-sans-serif: "IBM Plex Sans", sans-serif !default;
 $presentation-title-slide-text-align: "left";
 
@@ -71,6 +71,10 @@ table {
     text-align: left !important;
     color: #000;
     padding-left: 60px;
+}
+
+.reveal .progress {
+    height: 1%;
 }
 
 .border-right {

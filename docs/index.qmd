@@ -63,7 +63,7 @@ $$1, 1, 2, 3, 5, 8, 13,\dots$$
 
 $$
 \begin{align}
-F(n+2)=F(n+1)+F(n), \\
+F(n)=F(n-1)+F(n-2), \\
 \text{com}\; n \geq 1\;\text{e}\; F(1) = F(2) = 1
 \end{align}
 $$
@@ -72,16 +72,16 @@ $$
 3.
 
 ```{python}
-def fibonacci_of(n):
-    if n in {0, 1}:  # Base case
-        return n
-    return fibonacci_of(n - 1) + fibonacci_of(n - 2)  # Recursive case
+def fibonacci_de(n):
+    if n in {1, 2}:
+        return 1
+    return fibonacci_de(n - 1) + fibonacci_de(n - 2)
 ```
 
 4.
 
 ```{python}
-[fibonacci_of(n) for n in range(1, 9)]
+[fibonacci_de(n) for n in range(1, 9)]
 ```
 :::
 ::::

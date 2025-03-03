@@ -92,9 +92,25 @@ def fibonacci_de(n):
 
 \
 
-- Download <https://www.python.org/downloads/>
-- Para instalar o gerenciador de pacotes (`pip`) <https://pip.pypa.io/en/stable/installation/>
-- Para instalar o Anaconda (gerenciador de pacotes e ambiente) <https://www.anaconda.com/download>
+::: {.panel-tabset}
+
+### Instalar o Python:
+1. Abra a Microsoft Store no seu computador.
+2. Na barra de pesquisa, digite Python.
+3. Selecione a versão desejada do Python (geralmente, a mais recente).
+4. Clique em Obter e aguarde a instalação ser concluída.
+5. Após a instalação, o Python estará disponível no seu sistema, e você pode verificar digitando `python --version` no terminal.
+
+### Instalar o VSCode:
+1. Abra a Microsoft Store.
+2. Na barra de pesquisa, digite Visual Studio Code.
+3. Selecione o Visual Studio Code da Microsoft.
+4. Clique em Obter e aguarde a instalação ser concluída.
+5. Após a instalação, o VSCode estará disponível no seu sistema e pode ser aberto através do menu Iniciar.
+
+:::
+
+Depois de instalar ambos, você pode usar o VSCode para escrever e rodar código Python diretamente.
 
 ## Google Colab
 

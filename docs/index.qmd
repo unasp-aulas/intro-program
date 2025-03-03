@@ -487,6 +487,41 @@ print(f"O meu salário é R${salario:.2f}, mas com o meu cargo {cargo}, o novo s
 
 1. `if` aninhado
 
+## Operação ternária
+
+Seria uma forma mais simplificada de utilizar condições.
+
+\
+
+```{python}
+x = 54
+"Maior do que 50" if x > 50 else "Menor ou igual a 50"
+```
+
+## Match case
+
+Seria uma outra forma de aplicar condições no código. Nós reescreveremos o problema do aumento de salário.
+
+\
+
+```{.python}
+salario = float(input("Digite seu salário: "))
+cargo = input("Digite o nível do cargo: ")
+match cargo:
+  case "junior":
+    novo_salario = salario * 1.1
+  case "pleno":
+    novo_salario = salario * 1.2
+  case "senior":
+    novo_salario = salario * 1.3 
+  case _:
+    print("Cargo não identificado!")
+    novo_salario = None
+
+if novo_salario is not None:
+  print(f"O meu salário é R${salario:.2f}, mas com o meu cargo {cargo}, o novo salário será de R${novo_salario:.2f}")
+```
+
 # Repetições
 
 > *São utilizadas para executar a mesma parte de um programa várias vezes*

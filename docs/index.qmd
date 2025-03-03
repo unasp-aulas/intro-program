@@ -671,6 +671,8 @@ print(s)
 
 1. Instrução utilizada para interromper a execução de `while`
 
+Para continuar uma repetição existe a instrução `continue`
+
 ## Repetições
 
 \

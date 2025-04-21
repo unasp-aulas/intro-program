@@ -706,6 +706,25 @@ while x <= tamanho - 5:
 ███████████████████████████████████████████████████ 76%
 ```
 
+## Símbolos Unicode
+
+\
+
+Como apresentando no último exemplo, no python, é possível incluir símbolos utilizando a função `chr`.
+
+::: {.columns}
+::: {.column}
+```{python}
+[(i, chr(i)) for i in [9608, 9816, 128187, 128665, 129315, 128099, 8721, 128375]]
+```
+
+Uma lista poderá ser encontrada aqui <https://symbl.cc/> com os símbolos e códigos. O código que deverá ser utilizado é a parte numérica do HTML (&#[128375]{.mark};)
+:::
+::: {.column}
+![](images/unicode.png)
+:::
+:::
+
 # Estrutura de dados
 
 ## Listas

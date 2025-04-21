@@ -10,6 +10,7 @@ format:
     width: 1600
     height: 900
     footer: "[github.com/unasp-aulas/intro-program](https://github.com/unasp-aulas/intro-program)"
+    mermaid-format: png
 html-math-method: mathjax
 code-annotations: hover
 self-contained: true
@@ -1420,3 +1421,56 @@ while True:
     except:
         print("Valor inválido")
 ```
+
+# Git/Github
+
+> [Git é um sistema de controle de versão]{.mark} que ajuda a gerenciar e acompanhar mudanças no seu código, enquanto o [GitHub é uma plataforma online onde você pode hospedar seus repositórios Git]{.mark}, colaborar com outros desenvolvedores e compartilhar seus projetos de forma fácil e segura. Ambos são ferramentas essenciais para quem trabalha com desenvolvimento de software!
+
+## Git
+
+```{mermaid}
+%%| echo: false
+graph LR
+    A["Iniciar um repositório <br> (git init)"] --> C["Fazer alterações"]
+    B["Clonar repositório <br> (git clone)"] --> C
+    C --> D["Adicionar mudanças ao staging <br> (git add)"]
+    D --> E["Commit das mudanças <br> (git commit -m 'Mensagem de commit')"]
+    E --> F["Enviar para o repositório remoto <br> (git push)"]
+    F --> G["Atualizar local com pull <br> (git pull)"]
+```
+
+- Iniciar um repositório: Criar um novo repositório Git localmente.
+- Clonar repositório: Fazer uma cópia de um repositório remoto para o seu computador.
+- Adicionar mudanças ao staging: Preparar as alterações para serem commitadas, colocando-as na área de staging.
+- Commit das mudanças: Salvar as alterações no histórico do repositório
+- Enviar para o repositório remoto: Subir as mudanças locais para o repositório remoto na internet.
+- Atualizar local: Trazer as últimas mudanças do repositório remoto para o seu repositório local.
+
+## Mensagens semânticas de commit^[<https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716#file-semantic-commit-messages-md>]
+
+\
+
+> O commit semântico é uma prática de escrever mensagens de commit de forma clara e padronizada, usando um formato que indica o tipo de mudança feita (como correção, adição ou remoção) e uma descrição breve.
+
+### Exemplo
+
+```
+feat: add hat wobble
+^--^  ^------------^
+|     |
+|     +-> Resumo no tempo presente.
+|
++-------> Tipo: chore (tarefas), docs (documentação), feat (recurso), fix (correção), refactor (refatoração), style (estilo), ou test (teste).
+```
+
+## Mensagens semânticas de commit^[<https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716#file-semantic-commit-messages-md>]
+
+\
+
+- `feat`: (new feature for the user, not a new feature for build script)
+- `fix`: (bug fix for the user, not a fix to a build script)
+- `docs`: (changes to the documentation)
+- `style`: (formatting, missing semi colons, etc; no production code change)
+- `refactor`: (refactoring production code, eg. renaming a variable)
+- `test`: (adding missing tests, refactoring tests; no production code change)
+- `chore`: (updating grunt tasks etc; no production code change)

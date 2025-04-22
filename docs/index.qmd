@@ -13,11 +13,11 @@ format:
     mermaid-format: png
 html-math-method: mathjax
 code-annotations: hover
-self-contained: true
 ipynb-shell-interactivity: all
 execute: 
   echo: true
-jupyter: python3
+filters: 
+  - shinylive
 ---
 
 # Desenvolvimento de algoritmos para solução de problemas
@@ -1570,5 +1570,150 @@ print(min(diffs))
 
 # Aplicação Web
 
-## Shiny
+## Shiny^[<https://shiny.posit.co/py/>]
 
+<center>
+[![](images/shiny.png)](https://shiny.posit.co/py/)
+</center>
+
+## Exemplos
+
+\
+
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+
+from shiny import *
+
+app_ui = ui.page_fluid(
+    ui.input_slider("n", "N", 0, 100, 40),
+    ui.output_text_verbatim("txt"),
+)
+
+def server(input, output, session):
+    @output
+    @render.text
+    def txt():
+        return f"The value of n*2 is {input.n() * 2}"
+
+app = App(app_ui, server)
+```
+
+## Exemplos
+### Button
+
+\
+
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+
+from shiny import reactive, render
+from shiny.express import input, ui
+
+ui.input_action_button("action_button", "Action")  
+
+@render.text()
+def counter():
+    return f"{input.action_button()}"
+```
+
+## Exemplos
+### Checkbox
+
+\
+
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+
+from shiny.express import input, render, ui
+
+ui.input_checkbox_group(  
+    "checkbox_group",  
+    "Checkbox group",  
+    {  
+        "a": "A",  
+        "b": "B",  
+        "c": "C",  
+    },  
+)  
+
+@render.text
+def value():
+    return ", ".join(input.checkbox_group())
+```
+
+## Exemplos
+### Date
+
+\
+
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+
+from shiny.express import input, render, ui
+
+ui.input_date("date", "Date")  
+
+@render.text
+def value():
+    return input.date()
+```
+
+## Exemplos
+### Sidebar layout
+
+\
+
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+
+from shiny.express import ui
+
+with ui.sidebar(bg="#f8f8f8"):  
+    "Sidebar"  
+
+"Main content"  
+```
+
+
+## Exemplos
+
+\
+
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+
+from shiny.express import ui, input, render
+
+with ui.sidebar(bg="#f8f8f8"):
+    ui.input_select(
+        "select",
+        "Select",
+        {
+            "Olá": "Olá",
+            "Hello": "Hello",
+            "Hallo": "Hallo",
+        },
+    )
+
+    ui.input_text("text", "Text input", "Enter name...")
+
+
+@render.text
+def value():
+    return f"{input.select()} {input.text()}!"
+```
+
+\
+
+Para executar localmente
+
+```{.bash}
+shiny run --launch-browser app.py
+```

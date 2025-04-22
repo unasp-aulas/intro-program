@@ -1474,3 +1474,101 @@ feat: add hat wobble
 - `refactor`: (refactoring production code, eg. renaming a variable)
 - `test`: (adding missing tests, refactoring tests; no production code change)
 - `chore`: (updating grunt tasks etc; no production code change)
+
+# Olimpiada Brasileira de Informática
+<https://olimpiada.ic.unicamp.br/>
+
+## Torneio de tênis^[<https://olimpiada.ic.unicamp.br/pratique/ps/2021/f1/torneio/>]
+
+\
+
+```{.python}
+i = 0
+vitoria = 0
+while i < 6:
+  jogo = input()
+  if jogo == "V":
+    vitoria += 1
+  i += 1
+if vitoria >= 5:
+  print(1)
+elif vitoria in [3, 4]:
+  print(2)
+elif vitoria in [1, 2]:
+  print(3)
+else:
+  print(-1)
+```
+
+## Baralho^[<https://olimpiada.ic.unicamp.br/pratique/ps/2021/f1/baralho/>]
+
+\
+
+```{.python}
+C = []
+E = []
+U = []
+P = []
+c = 13
+e = 13
+u = 13
+p = 13
+cartas = input()
+for i in range(0, len(cartas), 3):
+  carta = cartas[i:i + 3]
+  if carta[-1] == "C":
+    if carta not in C and c != "erro":
+      C.append(carta)
+      c -= 1
+    else:
+      c = "erro"
+  elif carta[-1] == "E":
+    if carta not in E and e != "erro":
+      E.append(carta)
+      e -= 1
+    else:
+      e = "erro"
+  elif carta[-1] == "U":
+    if carta not in U and u != "erro":
+      U.append(carta)
+      u -= 1
+    else:
+      u = "erro"
+  elif carta[-1] == "P":
+    if carta not in P and p != "erro":
+      P.append(carta)
+      p -= 1
+    else:
+      p = "erro"
+
+print(c)
+print(e)
+print(u)
+print(p)
+```
+
+## Duplas de tênis^[<https://olimpiada.ic.unicamp.br/pratique/ps/2021/f2/tenis/>]
+
+\
+
+```{.python}
+entrada = []
+dupla_a = []
+dupla_b = []
+diffs = []
+for i in range(0, 4):
+  entrada.append(int(input()))
+
+for i, j in enumerate(entrada):
+  for k, l in enumerate(entrada):
+    if i > k:
+      dupla_a.append(j + l)
+      dupla_b.append(sum([entrada[s] for s in list(set(range(4)) - set([i, k]))]))
+diffs = [abs(i[0] - i[1]) for i in zip(dupla_a, dupla_b)]
+print(min(diffs))
+```
+
+# Aplicação Web
+
+## Shiny
+

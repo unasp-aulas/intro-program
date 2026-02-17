@@ -142,30 +142,24 @@ Para utlizar as funções de outros pacotes é necessário carregar os módulos 
 
 ```{python}
 #| output-location: column
-import re
-
-txt = "unasp fica no estado de sp"
-x = re.findall("sp", txt); x
+import math
+math.sqrt(100)
 ```
 
 \
 
 ```{python}
 #| output-location: column
-import re as regex
-
-txt = "unasp fica no estado de sp"
-x = regex.findall("sp", txt); x
+import math as ma
+ma.sqrt(100)
 ```
 
 \
 
 ```{python}
 #| output-location: column
-from re import findall
-
-txt = "unasp fica no estado de sp"
-x = findall("sp", txt); x
+from math import sqrt
+sqrt(100)
 ```
 
 ## Aritmética
@@ -269,20 +263,22 @@ type(d)
 ## Variáveis do tipo lógico
 
 ```{python}
-resultado = True
-aprovado = False
+verdadeiro = True
+falso = False
 ```
-
-\
 
 ### Operadores relacionais
 
 ```{python}
-#| output-location: column
 # Variáveis
 a = 2 # <1>
 b = 5 # <1>
 c = 5 # <1>
+```
+1. Variáveis `a`, `b` e `c`
+
+```{python}
+#| output-location: column
 # Operadores relacionais
 b > a # <2>
 a < b # <3>
@@ -290,17 +286,18 @@ c <= b # <4>
 c == b # <5>
 a != b # <6>
 ```
-1. Variáveis `a`, `b` e `c`
 2. `b` maior do que `a`
 3. `a` menor do que `b`
 4. `c` é menor ou igual a `b`
 5. `c` é igual a `b`
 6. `a` é diferente de `b`
 
+\
+
 Verificando o tipo
 
 ```{python}
-type(resultado)
+type(verdadeiro)
 ```
 
 ## Operadores lógicos

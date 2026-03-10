@@ -10,6 +10,8 @@ format:
     width: 1600
     height: 900
     footer: "[github.com/unasp-aulas/intro-program](https://github.com/unasp-aulas/intro-program)"
+    slide-number: true
+    show-slide-number: all
     mermaid-format: png
 html-math-method: mathjax
 code-annotations: hover
@@ -810,6 +812,36 @@ for i in notas:
   print(i)
 ```
 
+## Exercício
+
+\
+
+Construa um programa que solicite para qual número deve ser calculada a tabuada de multiplicação.
+
+```{.python}
+n = int(input("Tabuada de: "))
+for i in range(11):
+    print(f"{n} {chr(215)} {i} = {n * i}")
+```
+
+## Barra de progresso com `for` 
+
+\
+
+```{.python}
+from time import sleep
+
+for i in range(40):
+    print(f"\r {chr(9608) * i} {int(100 * i / 39)}%", end="") # <1>
+    sleep(0.5)
+```
+
+1. `\r` move o cursor de volta ao começo da linha.
+
+```
+██████████████████████████████████ 87%
+```
+
 ## Cópia de lista e substituição por um determinado valor
 
 \
@@ -1275,13 +1307,13 @@ Aplicação da função
 aumento_salario(1100, "pleno")
 ```
 
-## Funções
+## Jogo da Velha
 
 \
 
-### Jogo da Velha
-
-```{python}
+::: {.columns}
+::: {.column}
+```{.python}
 def tic_tac_toe():
     
     data = {}
@@ -1335,6 +1367,36 @@ def tic_tac_toe():
           show_board()
           break
 ```
+
+:::
+::: {.column}
+```
+ × | 2 | 3
+-----------
+ × | ◯ | 6
+-----------
+ 7 | 8 | 9
+
+Select a position (player ◯): 7
+
+ × | 2 | 3
+-----------
+ × | ◯ | 6
+-----------
+ ◯ | 8 | 9
+
+Select a position (player ×): 6
+
+ × | 2 | 3
+-----------
+ × | ◯ | ×
+-----------
+ ◯ | 8 | 9
+
+Select a position (player ◯):
+```
+:::
+:::
 
 # Exceções
 

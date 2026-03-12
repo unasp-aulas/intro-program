@@ -1505,6 +1505,21 @@ graph LR
 - Enviar para o repositório remoto: Subir as mudanças locais para o repositório remoto na internet.
 - Atualizar local: Trazer as últimas mudanças do repositório remoto para o seu repositório local.
 
+## Git config
+
+> O `git config` é um comando fundamental no Git, usado para configurar o comportamento da ferramenta, definir preferências do usuário e armazenar informações de identidade. Ele permite personalizar como o Git funciona em seu computador, desde o nome do autor do commit até o editor de texto padrão.
+
+\
+
+- Configurar seu nome: `git config --global user.name "Seu Nome"`
+- Configurar seu e-mail: `git config --global user.email "seu_email@exemplo.com"`
+- Verificar configurações: `git config --list`
+
+\
+
+O parâmetro `--global` pode ser substituido pelo `--local` caso opite por estas definições somente no nível do repositório.
+
+
 ## Mensagens semânticas de commit^[<https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716#file-semantic-commit-messages-md>]
 
 \
